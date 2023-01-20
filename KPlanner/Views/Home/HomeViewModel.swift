@@ -8,12 +8,18 @@
 import Foundation
 
 class HomeViewModel : ObservableObject {
-    @Published var myTask = TaskRepository.getAll()
+    @Published var myTasks = TaskRepository.getTask()
+    @Published var showAddTask = false
     
     func updateTaskCompletion(id: Int) {
-        if let i = myTask.firstIndex(where: { task in task.id == id }) {
-            myTask[i].completed = !myTask[i].completed
-            TaskRepository.updateTask(task: myTask[i])
+        
+        if let i = myTasks.firstIndex(where: { task in task.id == id }) {
+            myTasks[i].completed = !myTasks[i].completed
+            TaskRepository.updateTask(task: myTasks[i])
         }
+    }
+    
+    func updateTask() {
+        myTasks = TaskRepository.getTask()
     }
 }

@@ -11,10 +11,20 @@ struct HomeView: View {
     @ObservedObject var viewModel = HomeViewModel()
     
     var body: some View {
-        VStack{
-            List(viewModel.myTask) { task in
-                TaskItem(viewModel: viewModel, task: task)
+    
+        ZStack {
+            VStack {
+                HStack {
+                    Spacer()
+                }
+                .padding(.leading)
+                .padding(.trailing)
+                List(viewModel.myTasks) { task in
+                    TaskItem(viewModel: viewModel, task: task)
+                }
+                Spacer()
             }
+            
         }
     }
 }
