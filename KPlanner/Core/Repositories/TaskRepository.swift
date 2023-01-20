@@ -10,6 +10,10 @@ import Foundation
 class TaskRepository {
     private static var allTask = getAll()
     
+    static func getTask() -> [Task] {
+        return allTask
+    }
+    
     static private func getAll() -> [Task] {
         return [
             Task(id: 0, name: "task0", dateStart: Date(), dateEnd: Date()+1, emoji: "👌🏻", completed: true),
